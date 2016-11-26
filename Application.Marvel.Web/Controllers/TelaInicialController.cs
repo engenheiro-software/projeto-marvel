@@ -23,6 +23,7 @@ namespace Application.Marvel.Web.Controllers
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
+
         public ActionResult Index()
         {
             return View();
