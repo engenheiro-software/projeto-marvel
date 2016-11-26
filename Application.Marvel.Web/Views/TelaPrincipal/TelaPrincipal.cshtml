@@ -1,0 +1,39 @@
+﻿@using Application.Marvel.Web.Models
+@model Application.Marvel.Web.Models.CharacterViewModel
+
+@{
+    ViewBag.Title = "Tela Principal";
+}
+
+<h2>Tela Principal</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Description
+        </th>
+        <th>
+            Modified
+        </th>
+    </tr>
+
+    @foreach (var item in Model.characters)
+    {
+        <tr>
+            <td onclick="window.location = '@Url.RouteUrl("", new { controller = "TeladeDetalhe", action = "Index", id = item.id })'" style="cursor:pointer;">
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.modified)
+            </td>
+        </tr>
+    }
+
+</table>
+@Html.PageLinks(Model.paginacao,x => Url.Action("Index","TelaPrincipal",new { pagina = x}))

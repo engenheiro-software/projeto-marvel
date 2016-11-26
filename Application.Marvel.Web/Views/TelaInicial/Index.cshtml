@@ -1,0 +1,15 @@
+﻿@model Application.Marvel.Web.Models.Usuario
+@{
+    ViewBag.Title = "Tela Inicial";
+}
+<h2>Tela Inicial</h2>
+@using(Html.BeginForm("Enviar","TelaInicial",FormMethod.Post))
+{
+    <div>        
+        @Html.EditorFor(x => x.Private_Key, new { htmlAttributes = new { placeholder = "Private_Key" } })
+    </div>
+    <div>
+        @Html.EditorFor(x => x.Public_Key, new { htmlAttributes = new { placeholder = "Public_Key" } })
+    </div>    
+    <input type="submit" value="Acessar" />
+}

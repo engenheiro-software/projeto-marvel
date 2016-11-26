@@ -1,0 +1,52 @@
+﻿@using System.Text;
+@model Application.Marvel.Web.Models.Character
+
+@{
+    List<Application.Marvel.Web.Models.Fasciculos> fasc = new List<Application.Marvel.Web.Models.Fasciculos>();
+    fasc = TempData["fasciculos"] as List<Application.Marvel.Web.Models.Fasciculos>;
+    ViewBag.Title = "Tela de Detalhe";
+}
+
+<h2>Tela de Detalhe</h2>
+
+<div>
+    <hr />
+    <img src="@(String.Format("{0}.{1}", Model.thumbnail.path, Model.thumbnail.extension))" />
+    <dl class="dl-horizontal">                
+        <dt>
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.description)
+        </dd>        
+    </dl>
+</div>
+<table class="table table-bordered">
+    @foreach (var item in fasc)
+    {
+        <tr>      
+            <td>
+                <img src="@(String.Format("{0}.{1}", item.thumbnail.path, item.thumbnail.extension))" />
+            </td>      
+            <td>
+                @Html.DisplayFor(modelItem => item.title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.issueNumber)
+            </td>
+        </tr>
+    }
+</table>
+@Html.ActionLink("Voltar","Index","TelaPrincipal")
